@@ -14,7 +14,6 @@ export const OrderSuccessPage = () => {
     const dispatch=useDispatch()
     const currentOrder=useSelector(selectCurrentOrder)
     const userDetails=useSelector(selectUserInfo)
-    const {id}=useParams()
 
     const theme=useTheme()
     const is480=useMediaQuery(theme.breakpoints.down(480))
@@ -23,7 +22,7 @@ export const OrderSuccessPage = () => {
         if(!currentOrder){
             navigate("/")
         }
-    },[currentOrder])
+    },[currentOrder, navigate])
 
   return (
     <Stack width={'100vw'} height={'100vh'} justifyContent={'center'} alignItems={'center'}>

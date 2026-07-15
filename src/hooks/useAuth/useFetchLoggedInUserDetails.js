@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { selectLoggedInUser } from '../../features/auth/AuthSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAddressByUserIdAsync } from '../../features/address/AddressSlice'
@@ -27,5 +27,5 @@ export const useFetchLoggedInUserDetails = (deps) => {
             dispatch(fetchWishlistByUserIdAsync(loggedInUser?._id))
           }
         }
-    },[deps])
+    },[deps, loggedInUser, dispatch])
 }
