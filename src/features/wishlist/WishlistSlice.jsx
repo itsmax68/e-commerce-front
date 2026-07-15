@@ -66,8 +66,8 @@ const wishlistSlice=createSlice({
             })
             .addCase(fetchWishlistByUserIdAsync.fulfilled,(state,action)=>{
                 state.wishlistFetchStatus='fulfilled'
-                state.items=action.payload.data
-                state.totalResults=action.payload.totalResults
+                state.items=(action.payload && Array.isArray(action.payload.data)) ? action.payload.data : []
+                state.totalResults=action.payload ? action.payload.totalResults : 0
             })
             .addCase(fetchWishlistByUserIdAsync.rejected,(state,action)=>{
                 state.wishlistFetchStatus='rejected'

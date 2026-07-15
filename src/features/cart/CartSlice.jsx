@@ -61,7 +61,7 @@ const cartSlice=createSlice({
             })
             .addCase(fetchCartByUserIdAsync.fulfilled,(state,action)=>{
                 state.status='fulfilled'
-                state.items=action.payload
+                state.items=Array.isArray(action.payload) ? action.payload : []
             })
             .addCase(fetchCartByUserIdAsync.rejected,(state,action)=>{
                 state.status='rejected'

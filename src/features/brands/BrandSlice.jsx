@@ -23,7 +23,7 @@ const brandSlice=createSlice({
             })
             .addCase(fetchAllBrandsAsync.fulfilled,(state,action)=>{
                 state.status='fulfilled'
-                state.brands=action.payload
+                state.brands=Array.isArray(action.payload) ? action.payload : []
             })
             .addCase(fetchAllBrandsAsync.rejected,(state,action)=>{
                 state.status='rejected'

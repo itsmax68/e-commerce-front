@@ -88,8 +88,8 @@ const productSlice=createSlice({
             })
             .addCase(fetchProductsAsync.fulfilled,(state,action)=>{
                 state.productFetchStatus='fullfilled'
-                state.products=action.payload.data
-                state.totalResults=action.payload.totalResults
+                state.products=(action.payload && Array.isArray(action.payload.data)) ? action.payload.data : []
+                state.totalResults=action.payload ? action.payload.totalResults : 0
             })
             .addCase(fetchProductsAsync.rejected,(state,action)=>{
                 state.productFetchStatus='rejected'
